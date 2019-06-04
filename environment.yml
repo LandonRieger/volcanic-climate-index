@@ -1,11 +1,8 @@
-name: volcanic-climate-impact
-channels:
-  - defaults
-  - conda-forge
 dependencies:
-  - bokeh
-  - numpy
-  - pandas 
-  - xarray 
-  - netcdf4
-  - nbserverproxy
+  - python=3.7.3
+  - bokeh=1.2.0
+  - numpy=1.16.4
+  - pandas=0.24.2
+  - xarray=0.12.1
+  - netcdf4=1.4.2
+  - nbserverproxy=0.8.8

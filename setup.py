@@ -13,5 +13,5 @@ setup(
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['bokeh', 'numpy', 'pandas', 'xarray', 'netcdf4', 'dask', 'geoviews', 'cartopy'],
+    install_requires=['bokeh', 'numpy', 'pandas', 'xarray', 'netcdf4'],
 )

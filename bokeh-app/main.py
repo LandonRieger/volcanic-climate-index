@@ -1,10 +1,13 @@
-from bokeh.io import curdoc
+from bokeh.io import curdoc, show
 from bokeh.layouts import column
 from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, Patch, RangeTool, Range1d, Label, Legend, HoverTool
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file
 import xarray as xr
 import pandas as pd
 import numpy as np
+import os
+
+# output_file("test.html")
 
 
 def calc_vci():
@@ -12,7 +15,7 @@ def calc_vci():
                                          date_to_str(range_tool.x_range.end)))
     vci = aod.integrate(dim='time', datetime_unit='D').values * 365
     top = vci - xr.concat([aod.isel(time=0), aod.isel(time=-1)], dim='time') \
-        .integrate(dim='time', datetime_unit='D').values * 365
+                                                .integrate(dim='time', datetime_unit='D').values * 365
 
     if top <= 0:
         return 0
@@ -66,7 +69,8 @@ volcanoes.index.name = 'Volcano'
 
 # Compute Aerosol Optical Depth
 # compute aod above the tropopause
-data = xr.open_dataset('../data/GloSSAC-V1-aod.nc')
+folder = os.path.dirname(os.path.abspath(__file__))
+data = xr.open_dataset(os.path.join(folder, '..', 'data', 'GloSSAC-V1-aod.nc'))
 aod = data['Measurements_extinction']
 
 # integrate globally
@@ -154,4 +158,6 @@ legend = Legend(items=[("Deseasonalized AOD", [a1]), ("Total AOD", [a0])], locat
 p2.add_layout(legend, 'below')
 p2.legend.orientation = "horizontal"
 
+curdoc().title = "Volcanic Climate Index"
 curdoc().add_root(column(p, p2))
+# show(column(p, p2))
