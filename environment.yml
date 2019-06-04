@@ -8,4 +8,4 @@ dependencies:
   - pandas 
   - xarray 
   - netcdf4
-  - dask
+  - nbserverproxy
