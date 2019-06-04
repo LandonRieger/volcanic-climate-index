@@ -155,4 +155,3 @@ p2.add_layout(legend, 'below')
 p2.legend.orientation = "horizontal"
 
 curdoc().add_root(column(p, p2))
-curdoc().title("Volcanic Climate Index")
