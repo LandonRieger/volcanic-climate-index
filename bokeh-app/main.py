@@ -66,7 +66,7 @@ volcanoes.index.name = 'Volcano'
 
 # Compute Aerosol Optical Depth
 # compute aod above the tropopause
-data = xr.open_dataset('../datat/GloSSAC-V1-aod.nc')
+data = xr.open_dataset('../data/GloSSAC-V1-aod.nc')
 aod = data['Measurements_extinction']
 
 # integrate globally
@@ -154,5 +154,5 @@ legend = Legend(items=[("Deseasonalized AOD", [a1]), ("Total AOD", [a0])], locat
 p2.add_layout(legend, 'below')
 p2.legend.orientation = "horizontal"
 
-curdoc.add_root(column(p, p2))
-curdoc.title("Volcanic Climate Index")
+curdoc().add_root(column(p, p2))
+curdoc().title("Volcanic Climate Index")
