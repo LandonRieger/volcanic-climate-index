@@ -2,5 +2,5 @@
 
 # Volcanic Climate Index
 
-This project explores possible metrics for an improved index describing the 
+This project explores metrics for an improved index describing the 
 climatic impact of volcanic eruptions.
