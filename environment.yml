@@ -5,7 +5,6 @@ dependencies:
   - pandas=0.24.2
   - xarray=0.12.1
   - netcdf4=1.4.2
-  - tornado=5.1.1
-  - notebook=5.7.4
+  - pip
   - pip:
     - jupyter-server-proxy
