@@ -1,0 +1,6 @@
+bokeh
+pandas
+numpy
+netcdf4
+numpy
+xarray
