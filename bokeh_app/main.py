@@ -1,12 +1,13 @@
 from bokeh.io import curdoc, show
-from bokeh.layouts import column
+from bokeh.layouts import column, gridplot, row
 from bokeh.models import ColumnDataSource, LinearColorMapper, ColorBar, Patch, RangeTool, Range1d, Label, Legend, HoverTool
+from bokeh.models.widgets import Div
 from bokeh.plotting import figure, output_file
 import xarray as xr
 import pandas as pd
 import numpy as np
 import os
-
+from vci_text import vci_text
 # output_file("test.html")
 
 
@@ -159,5 +160,12 @@ p2.add_layout(legend, 'below')
 p2.legend.orientation = "horizontal"
 
 curdoc().title = "Volcanic Climate Index"
-curdoc().add_root(column(p, p2))
-# show(column(p, p2))
+curdoc().add_root(column(Div(text='<h1>Volcanic Climate Index</h1>', width=1200),
+                         vci_text(width=900),
+                         Div(text='<h2>Exploration</h2>', width=900),
+                         Div(text='Move the grey shaded area around to determine the VCI for different eruptions. '
+                                  'VCI is calculated as the time integrated global aerosol optical depth after the '
+                                  'background layer and the baseline value (calculated as the beginning of the period) '
+                                  'has been removed. ', width=900),
+                         p,
+                         p2))
